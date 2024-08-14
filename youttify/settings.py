@@ -43,6 +43,8 @@ class Dev(Configuration):
         'django.contrib.staticfiles',
         'youttify_auth',
         'main',
+        'crispy_forms',
+        'crispy_bootstrap5'
     ]
 
     MIDDLEWARE = [
@@ -60,7 +62,7 @@ class Dev(Configuration):
     TEMPLATES = [
         {
             'BACKEND': 'django.template.backends.django.DjangoTemplates',
-            'DIRS': [BASE_DIR / 'templates'],
+            'DIRS': [os.path.join(BASE_DIR, 'templates')],
             'APP_DIRS': True,
             'OPTIONS': {
                 'context_processors': [
@@ -125,6 +127,11 @@ class Dev(Configuration):
     # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
     STATIC_URL = '/static/'
+    STATIC_URL = '/static/'
+    STATICFILES_DIRS = [
+        os.path.join(BASE_DIR, 'static')
+    ]
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
     PASSWORD_HASHERS = [
       'django.contrib.auth.hashers.Argon2PasswordHasher',
@@ -136,6 +143,20 @@ class Dev(Configuration):
     AUTH_USER_MODEL = "youttify_auth.YouttifyUser"
     # Set the default auto field
     DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+    # Crispy
+    CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+    CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+    EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+    ACCOUNT_ACTIVATION_DAYS = 7
+    
+    SITE_ID = 1
+    ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+    ACCOUNT_EMAIL_REQUIRED = True
+    ACCOUNT_USERNAME_REQUIRED = False
+    ACCOUNT_AUTHENTICATION_METHOD = "email"
+    
 class Prod(Dev):
     DEBUG = False
     SECRET_KEY = values.SecretValue()
