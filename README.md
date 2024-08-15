@@ -5,4 +5,5 @@
 - Configuration for environment variables with django-configurations
 - Security and Passwords with django[argon2]
 - Registration with django registration library (reset password, two step workflow, ...)
+  Verify by email in the console for debug
 - Login via the third parties (Google)
