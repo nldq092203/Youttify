@@ -40,11 +40,16 @@ class Dev(Configuration):
         'django.contrib.contenttypes',
         'django.contrib.sessions',
         'django.contrib.messages',
+        "django.contrib.sites",
         'django.contrib.staticfiles',
         'youttify_auth',
         'main',
         'crispy_forms',
-        'crispy_bootstrap5'
+        'crispy_bootstrap5',
+        "allauth",
+        "allauth.account",
+        "allauth.socialaccount",
+        "allauth.socialaccount.providers.google"
     ]
 
     MIDDLEWARE = [
@@ -55,6 +60,7 @@ class Dev(Configuration):
         'django.contrib.auth.middleware.AuthenticationMiddleware',
         'django.contrib.messages.middleware.MessageMiddleware',
         'django.middleware.clickjacking.XFrameOptionsMiddleware',
+        'allauth.account.middleware.AccountMiddleware',
     ]
 
     ROOT_URLCONF = 'youttify.urls'

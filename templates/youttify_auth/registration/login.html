@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags main_extras static %}
 {% block css %}
-    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <link rel="stylesheet" href="{% static 'css/youttify_auth/login.css' %}">
 {% endblock %}
 {% block title %} Yottify Login {% endblock %}
 {% block content %}
@@ -34,7 +34,7 @@
             <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start text-center">
               <p class="lead fw-normal mb-0 me-3">Sign in with</p>
               <button data-mdb-ripple-init type="button" class="btn btn-secondary mx-1">
-                <i class="fab fa-google"></i>
+                <a href="{% url "google_login" %}"><i class="fab fa-google"></i></a>
               </button>
             </div>
   
